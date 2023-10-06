@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Bar</title>
+    <style>
+        .container{
+            height:97vh;
+            width:98vw;
+        }
+        .btn{
+            background-color: blue;
+            border-radius: 50px;
+            color: #fff;
+            padding:8px;
+            border: none;
+        }
+        input[type="text"]{
+            width:250px;
+            height:20px;
+            margin-left:500px;
+        }
+        #paragraph{
+            font-family: sans-serif;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="wrapper">
+            <input type="text" id="text-to-search" placeholder="Enter text to search">
+            <button onclick="search()" class="btn">Search</button>
+        </div>
+        <p id="paragraph">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex quo quam nisi officiis ad aspernatur doloribus ab? Amet, ea placeat, consequatur corrupti id consectetur suscipit, iure ipsum quia quae ducimus!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel fugiat assumenda soluta nisi iusto molestias delectus, ipsam dolorum. Iusto magnam totam, eos eum quibusdam facere deserunt perferendis nihil mollitia suscipit!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus inventore aliquid ipsum totam temporibus blanditiis. Illum, mollitia labore? Deserunt, fugiat illum. Nobis vel nam quo eaque provident sapiente necessitatibus nulla!
+        </p>
+    </div>
+    <script>
+        function search(){
+            let textToSearch = document.getElementById("text-to-search").value;
+            let paragraph = document.getElementById("paragraph");
+            textToSearch = textToSearch.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
+            let pattern = new RegExp(`${textToSearch}`,"gi");
+            paragraph.innerHTML = paragraph.textContent.replace(pattern, match => `<mark>${match}</mark>`)
+
+        }
+    </script>
+</body>
+</html>
